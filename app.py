@@ -143,7 +143,9 @@ def detect_objects(image, prompt, show_masks, show_boxes, crop_options):
     return output_image_path
 
 # block = gr.Blocks(css=".gradio-container {background-color: #f8f8f8; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}" )
-block = gr.Blocks(theme='JohnSmith9982/small_and_pretty', css="footer{display:none !important}")
+# block = gr.Blocks(theme='JohnSmith9982/small_and_pretty', css="footer{display:none !important}")
+block = gr.Blocks(theme='JohnSmith9982/small_and_pretty')
+
 
 with block:
     gr.HTML("""
@@ -159,25 +161,46 @@ with block:
     gr.HTML("<h1 style='text-align: center;'>AI-Driven Image Annotation for Object Detection: A Hands-Free Approach</h1>")
     gr.HTML("<h3 style='text-align: center;'>This demo consists of a single file flow of our final project for MPI</h3>")
     with gr.Row():
-        with gr.Column(width="auto"):
+        # with gr.Column(width="auto"):
+        with gr.Column():
+        
             input_image = gr.Image(type='filepath', label="Upload Image")
-        with gr.Column(width="auto"):
+
+        # with gr.Column(width="auto"):
+        with gr.Column():
+        
             output_image = gr.Image(type='filepath', label="Result")
     with gr.Row():
-        with gr.Column(width="auto"):
+        # with gr.Column(width="auto"):
+        with gr.Column():
+        
             object_search = gr.Textbox(
                 label="Object to Detect",
                 placeholder="Enter any text, comma separated if multiple objects needed",
                 show_label=True,
                 lines=1,
             )
-        with gr.Column(width="auto"):
-            show_masks = gr.Checkbox(label="Show Masks", default=True)
-            show_boxes = gr.Checkbox(label="Show Boxes", default=True)
-        with gr.Column(width="auto"):
-            crop_options = gr.Radio(choices=["None", "Crop", "Inverse Crop"], label="Crop Options", default="None")
+        # with gr.Column(width="auto"):
+        with gr.Column():
+
+            # show_masks = gr.Checkbox(label="Show Masks", default=True)
+            show_masks = gr.Checkbox(label="Show Masks")
+
+            # show_boxes = gr.Checkbox(label="Show Boxes", default=True)
+            show_boxes = gr.Checkbox(label="Show Boxes")
+
+
+        # with gr.Column(width="auto"):
+        with gr.Column():
+        
+
+            # crop_options = gr.Radio(choices=["None", "Crop", "Inverse Crop"], label="Crop Options", default="None")
+            crop_options = gr.Radio(choices=["None", "Crop", "Inverse Crop"], label="Crop Options")
+
     with gr.Row():
-        submit = gr.Button(value="Send", variant="secondary").style(full_width=True)
+        # submit = gr.Button(value="Send", variant="secondary").style(full_width=True)
+        submit = gr.Button(value="Send", variant="secondary")
+
 
     gr.Examples(
         examples=[
